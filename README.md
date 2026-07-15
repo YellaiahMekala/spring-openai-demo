@@ -1,0 +1,2 @@
+# spring-openai-demo
+springai

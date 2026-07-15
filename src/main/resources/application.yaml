@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-openai-demo
+
+  ai:
+    openai:
+      api-key: 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
+
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: llama3.2:1b
+
+    chat:
+      client:
+        enabled: false
+
+#    google:
+#      genai:
+#        api-key: AIzaSyAZwW83ef-rfbbIeo3PoeEdkCIvxd66D7w
+
+server:
+  port: 8080
