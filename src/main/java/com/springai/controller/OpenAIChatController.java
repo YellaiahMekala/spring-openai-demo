@@ -2,13 +2,14 @@ package com.springai.controller;
 
 import com.springai.service.MessageRolesService;
 import com.springai.service.OpenAIChatService;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("openai/api")
+@RequestMapping("/api")
 public class OpenAIChatController {
     private OpenAIChatService openAIChatService;
     private  final MessageRolesService messageRolesService;
@@ -23,9 +24,20 @@ public class OpenAIChatController {
         return openAIChatService.chatWithOpenAI(message);
     }
 
+    /*@GetMapping("/check/policy")
     public String checkInsurancePolicy(@RequestParam String message){
-        return  messageRolesService.checkPolicy(message);
+        return  messageRolesService.checkInsurancePolicy(message);
+    }
+*/
+
+    @GetMapping("/check/policy")
+    public ChatResponse checkInsurancePolicy(@RequestParam String message){
+        return  messageRolesService.checkInsuranceV3Policy(message);
     }
 
+    @GetMapping("/guide")
+    public String guideUser(@RequestParam String topic,@RequestParam String level, @RequestParam int points){
+        return  messageRolesService.guideMe(topic, level, points);
+    }
 
 }

@@ -13,9 +13,9 @@ public class OpenAIChatService {
         this.chatClient = chatClientBuilder.build();
     }
 
-    public  String chatWithOpenAI(String message){
+    public String chatWithOpenAI(String message) {
 
-        return  chatClient
+        return chatClient
                 .prompt(message)
                 .call()
                 .content();
