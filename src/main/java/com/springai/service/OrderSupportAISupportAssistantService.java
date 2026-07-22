@@ -1,9 +1,14 @@
 package com.springai.service;
 
+import com.springai.advisor.AuditTokenUsageAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderSupportAISupportAssistantService {
@@ -27,6 +32,11 @@ public class OrderSupportAISupportAssistantService {
         //String PromptUserSpec;
         return chatClient
                 .prompt()
+                .advisors(List.of(new SimpleLoggerAdvisor(),
+                       new SafeGuardAdvisor(List.of("password","otp","cvv")
+                ,"security reasons-never asks sensitive info",1),
+                                new AuditTokenUsageAdvisor()))
+
                 .system(orderSystemPolicyPrompt)
                 .user(promptUserSpec -> promptUserSpec
                         .text(orderUserPrompt)
