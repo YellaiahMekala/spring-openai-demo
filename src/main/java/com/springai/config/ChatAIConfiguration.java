@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ChatAIConfiguration {
 
-    @Bean
-    public ChatClient openAIChatClient(OpenAiChatModel openAiChatModel){
-        return ChatClient.builder(openAiChatModel).build();
-    }
+//    @Bean
+//    public ChatClient openAIChatClient(OpenAiChatModel openAiChatModel){
+//        return ChatClient.builder(openAiChatModel).build();
+//    }
 
     @Bean
     public ChatClient ollamaChatClient(OllamaChatModel ollamaChatModel){
