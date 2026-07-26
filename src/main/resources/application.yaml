@@ -6,11 +6,11 @@ spring:
     openai:
       api-key: ${OPENAI_APIKEY}
 
-    chat:
-      options:
-        model: gpt-4o-mini
-        temperature: 0.3
-        max_tokens: 500
+#    chat:
+#      options:
+#        model: gpt-4o-mini
+#        temperature: 0.3
+#        max_tokens: 500
 
 
 
@@ -19,9 +19,9 @@ spring:
       chat:
         model: llama3.2:1b
 
-#    chat:
-#      client:
-#        enabled: false
+    chat:
+      client:
+        enabled: false
 logging:
   level:
     org:
